@@ -102,7 +102,7 @@ class apiFeatures {
 exports.getAlltours = async (req,res) =>{
     
     try{
-        
+        //no comments
         // const queryObj = {...req.query}
         // const removed = ['page', 'limit', 'fields', 'sort'];
         // removed.forEach((el => delete queryObj[el]));
