@@ -1,0 +1,55 @@
+[33mcommit 9d4655761912d76cd507459c7f4e1fb7e366b778[m[33m ([m[1;36mHEAD -> [m[1;32mchanges[m[33m)[m
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Tue Jan 21 19:26:20 2020 +0530
+
+    New changes
+
+[33mcommit df6d1fb4533038b3b708c2e989707f1f9dbc5116[m
+Merge: 92a109d 2929361
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 18:08:03 2020 +0530
+
+    Merge branch 'master' of https://github.com/sandhumandeep/Natours into changes
+
+[33mcommit 92a109d969291305f5b62b4487898b46915f109a[m[33m ([m[1;31morigin/changes[m[33m)[m
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 18:05:09 2020 +0530
+
+    new branch-changes
+
+[33mcommit 292936152d1fe6e1b8186bdfd72bee03aed5142f[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:59:57 2020 +0530
+
+    checking
+
+[33mcommit d2136e8875d7d6870ec6172dc814306d185e5ba8[m
+Merge: f58595a 1860b6b
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:57:12 2020 +0530
+
+    Merge branch 'master' of https://github.com/sandhumandeep/Natours
+
+[33mcommit 1860b6b23938969953513eda9aa4ca038aded2da[m
+Author: Mandeep Singh Sandhu <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:56:43 2020 +0530
+
+    Delete aws.yml
+
+[33mcommit fe1dc15cba856241822442555d573a2432334047[m
+Author: Mandeep Singh Sandhu <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:50:49 2020 +0530
+
+    Create aws.yml
+
+[33mcommit f58595a34cc5183a7b75985251e614341150e168[m
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:47:47 2020 +0530
+
+    added comments
+
+[33mcommit ac7fb154cc328ac4a01207e916854fb4e9075d41[m
+Author: Mandeep <mani009sandhu@gmail.com>
+Date:   Fri Jan 17 17:04:06 2020 +0530
+
+    first commit
