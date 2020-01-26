@@ -4,6 +4,13 @@ dotenv.config({path : './config.env'});
 
 const app = require('./app');    
 
+process.on('uncaughtException', err=>{
+    console.log("Error");
+    console.log(err.name, err.message);
+    process.exit(1);
+})
+
+
 // console.log(process.env);
 
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
@@ -16,19 +23,14 @@ mongoose.connect(DB, {
 }).then(() => console.log("Database connected"));
 
 
-
-// const tourData = new Tour({
-//     name : "The Silent Grump",
-//     price : 499,
- 
-// })
-
-// tourData.save().then(doc => {
-//     console.log(doc);
-// }).catch(err => {
-//     console.log("ERROR" , err);
-// })
-
-app.listen(process.env.PORT, () =>{
+const server = app.listen(process.env.PORT, () =>{
     console.log('server running');
+})
+
+process.on('unhandledRejection', err =>{
+    console.log('ERROR!!');
+    console.log(err.name, err.message);
+    server.close(() =>{
+        process.exit(1);
+    })
 })

@@ -6,6 +6,18 @@ const handleCastError = err=>{
 
 }
 
+const handleDuplicateError = err =>{
+    const value = err.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
+    const message = `Duplicate value ${value}. Please use a different value.`
+    return new AppError(message, 400);
+}
+
+const handleValidationError = err =>{
+    const error = Object.values(err.errors).map(el => el.message);
+    const message = `Invalid entry ${error.join('. ')}`;
+    return new AppError(message, 400);
+}
+
 const prodError = (err, res) =>{
     if(err.isOperational)
         {
@@ -49,10 +61,10 @@ module.exports = (err,req,res,next)=>{
          
         let error = {...err};
         console.log(error.name);
-        if(error.name === 'CastError') 
-        {
-            error = handleCastError(error);
-        }
+        if(error.name === 'CastError')  error = handleCastError(error);
+        if(error.code === 11000) error = handleDuplicateError(error);
+        if(error.name === 'ValidationError') error = handleValidationError(error);
+        
         prodError(error,res);
     }
 
