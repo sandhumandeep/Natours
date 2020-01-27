@@ -48,7 +48,6 @@ exports.login = catchAsync(async (req,res,next) => {
 
    console.log(user);
 
-    console.log('mani');
 
    if(!user || !(await user.correctPassword(password, user.password)))
    {
@@ -67,3 +66,19 @@ exports.login = catchAsync(async (req,res,next) => {
    });
 
 });
+
+exports.protect = catchAsync(async(req,res, next) =>{
+    let token;
+
+    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer'))
+    {
+        token = req.headers.authorization.split(' ')[1];
+    }
+    console.log(token);
+    if(!token)
+    {
+        return next(new AppError('Please login to access all tours'), 401);
+    }
+
+
+})
