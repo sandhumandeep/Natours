@@ -6,6 +6,10 @@ const handleCastError = err=>{
 
 }
 
+     
+const handleInvalidtoken = () => new AppError('Invalid token, please login again', 401);
+ 
+const handleJWTExpire =  () => new AppError('Your token has expired!, Please login again', 401)
 const handleDuplicateError = err =>{
     const value = err.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
     const message = `Duplicate value ${value}. Please use a different value.`
@@ -59,11 +63,14 @@ module.exports = (err,req,res,next)=>{
         console.log('entered');
     {
          
-        let error = {...err};
+        // let error = {...err};
+        let error = Object.create(err)
         console.log(error.name);
         if(error.name === 'CastError')  error = handleCastError(error);
         if(error.code === 11000) error = handleDuplicateError(error);
         if(error.name === 'ValidationError') error = handleValidationError(error);
+        if(error.name === 'JsonWebTokenError') error = handleInvalidtoken();
+        if(error.name === 'TokenExpiredError') error = handleJWTExpire(); 
         
         prodError(error,res);
     }

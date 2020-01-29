@@ -3,6 +3,7 @@ const catchAsync = require('../utils/catchAsync');
 const jwt = require('jsonwebtoken');
 const AppError  = require('../utils/appError');
 const bcrypt = require('bcryptjs');
+const util = require('util');
 
 const signtoken = id =>{
    return jwt.sign({id },  process.env.JWT_SECRET, {
@@ -42,12 +43,7 @@ exports.login = catchAsync(async (req,res,next) => {
 
     //2) check if email exists and password is correct
    const user = await User.findOne({email}).select('+password');
-   const correct = await user.correctPassword(password, user.password);
-    console.log(user.password);
-   console.log(correct);
-
-   console.log(user);
-
+   
 
    if(!user || !(await user.correctPassword(password, user.password)))
    {
@@ -80,5 +76,16 @@ exports.protect = catchAsync(async(req,res, next) =>{
         return next(new AppError('Please login to access all tours'), 401);
     }
 
+   const decoded = await util.promisify(jwt.verify)(token, process.env.JWT_SECRET);
+   
+   console.log(decoded);
+
+   const freshUser = await User.findById(decoded._id);
+
+   if(!freshUser)
+   {
+       return next(new AppError('The token belonging to this user no longer exist'));
+   }
+    
 
 })
